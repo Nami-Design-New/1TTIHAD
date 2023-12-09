@@ -1,0 +1,148 @@
+:root {
+  --mainColor: #fef200;
+  --secoundColor: #7f61ab;
+}
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+  // background-color: #eee;
+  border-radius: 0px !important;
+}
+::-webkit-scrollbar-track {
+  border-radius: 0px !important;
+  background: #dddddd;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #a1a1a1;
+  outline: none;
+  border-radius: 20px !important;
+}
+:target {
+  scroll-margin-top: 50px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+  color: var(--mainColor);
+}
+button {
+  cursor: pointer;
+}
+button:focus {
+  outline: 0;
+}
+body {
+  overflow-x: hidden;
+}
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+video,
+img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+input {
+  accent-color: var(--mainColor) !important;
+}
+::selection {
+  background-color: var(--mainColor);
+}
+body {
+  background-image: url(BG2.png);
+  background-size: 8px;
+}
+#capture-element {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100dvw;
+  margin: auto;
+  aspect-ratio: 1/1;
+  max-width: 800px;
+  height: 100dvh;
+  background: url(BG.png);
+  background-size: cover;
+  background-position: center;
+  .bgMask {
+    position: relative;
+    width: min(100% - 24px, 400px);
+    aspect-ratio: 1/1.2;
+    mask-image: url("maskImg.png");
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    filter: drop-shadow(5px 5px 0px var(--secoundColor));
+
+    
+  }
+  .imgToReplace {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-image: url(logo.png);
+  }
+}
+#result {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+}
+.btns {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  .capture {
+    padding: 8px 16px;
+    background-color: var(--mainColor);
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .inputGroup {
+    display: flex;
+    color: var(--mainColor);
+    #imageInput {
+      display: none;
+    }
+    label {
+      padding: 8px 24px;
+      border: 2px dashed var(--mainColor);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
