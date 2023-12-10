@@ -139,6 +139,7 @@ body {
      object-fit: cover;
   -o-object-position: top;
      object-position: top;
+  background-color: #000;
 }
 #capture-element .top {
   position: absolute;
