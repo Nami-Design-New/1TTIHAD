@@ -90,6 +90,11 @@ input {
 body {
   background-image: url(BG2.png);
   background-size: 8px;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #capture-element {
@@ -100,35 +105,43 @@ body {
   flex-direction: column;
   width: 100dvw;
   margin: auto;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1/1.1;
   max-width: 800px;
-  height: 100dvh;
-  background: url(BG.png);
-  background-size: cover;
-  background-position: center;
 }
-#capture-element .bgMask {
-  position: relative;
-  width: min(100% - 24px, 400px);
-  aspect-ratio: 1/1.2;
-  -webkit-mask-image: url("maskImg.png");
-          mask-image: url("maskImg.png");
-  -webkit-mask-size: contain;
-          mask-size: contain;
-  -webkit-mask-position: center;
-          mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  filter: drop-shadow(5px 5px 0px var(--secoundColor));
-}
-#capture-element .imgToReplace {
-  position: relative;
+#capture-element .background {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+#capture-element .imgToReplace {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40%;
+  aspect-ratio: 1/1.1;
+  z-index: 2;
+  transform: translate(-54%, -62%);
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: top;
-  background-image: url(logo.png);
+}
+#capture-element .top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 #result {
@@ -146,6 +159,10 @@ body {
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
+  z-index: 5;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .btns .capture {
   padding: 8px 16px;
