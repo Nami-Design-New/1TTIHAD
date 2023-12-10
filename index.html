@@ -30,7 +30,14 @@
                     var link = document.createElement('a');
                     link.href = dataUrl;
                     link.download = '1TTIHAD CLUB.jpg';
+
+                    // Simulate a click on the link
+                    document.body.appendChild(link);
                     link.click();
+
+                    // Remove the link from the document
+                    document.body.removeChild(link);
+
                     document.getElementById('result').innerHTML = 'تم التقاط الصورة بنجاح!';
                 })
                 .catch(function (error) {
