@@ -26,18 +26,26 @@
     <script src="html-to-image.min.js"></script>
     <script>
         function capture() {
-            htmlToImage.toPng(document.getElementById('capture-element'))
+            htmlToImage.toJpeg(document.getElementById('capture-element'), { quality: 0.95 })
                 .then(function (dataUrl) {
                     var link = document.createElement('a');
                     link.href = dataUrl;
-                    link.download = '1TTIHAD CLUB.png';
+                    link.download = '1TTIHAD CLUB.jpg';
+
+                    // Simulate a click on the link
+                    document.body.appendChild(link);
                     link.click();
+
+                    // Remove the link from the document
+                    document.body.removeChild(link);
+
                     document.getElementById('result').innerHTML = 'تم التقاط الصورة بنجاح!';
                 })
                 .catch(function (error) {
                     console.error('Error capturing image:', error);
                 });
         }
+
         function handleImageChange() {
             var input = document.getElementById('imageInput');
             var imgToReplace = document.querySelector('.imgToReplace');
