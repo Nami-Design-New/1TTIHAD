@@ -22,22 +22,26 @@
         <button class="capture" onclick="capture()">التقاط وتنزيل الصورة</button>
     </div>
     <div id="result"></div>
-    <!-- js -->
     <script src="html-to-image.min.js"></script>
     <script>
         function capture() {
-            htmlToImage.toJpeg(document.getElementById('capture-element'), { quality: 0.95 })
+            htmlToImage.toJpeg(document.getElementById('capture-element'), { quality: 1 })
                 .then(function (dataUrl) {
                     var link = document.createElement('a');
                     link.href = dataUrl;
                     link.download = '1TTIHAD CLUB.jpg';
 
-                    // Simulate a click on the link
-                    document.body.appendChild(link);
-                    link.click();
-
-                    // Remove the link from the document
-                    document.body.removeChild(link);
+                    // For Safari
+                    if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+                        window.open(link.href);
+                    } else {
+                        // For other browsers
+                        // Simulate a click on the link
+                        document.body.appendChild(link);
+                        link.click();
+                        // Remove the link from the document
+                        document.body.removeChild(link);
+                    }
 
                     document.getElementById('result').innerHTML = 'تم التقاط الصورة بنجاح!';
                 })
