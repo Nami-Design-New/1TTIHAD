@@ -37,7 +37,10 @@
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
-                    imgToReplace.style.backgroundImage = 'url(' + e.target.result + ')';
+                    var imgElement = document.createElement('img');
+                    imgElement.src = e.target.result;
+                    imgToReplace.innerHTML = '';
+                    imgToReplace.appendChild(imgElement);
                 };
                 reader.readAsDataURL(input.files[0]);
             }
