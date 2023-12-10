@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1TTIHAD CLUB</title>
-    <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -23,21 +22,16 @@
         <button class="capture" onclick="capture()">التقاط وتنزيل الصورة</button>
     </div>
     <div id="result"></div>
+    <!-- js -->
+    <script src="html-to-image.min.js"></script>
     <script>
         function capture() {
-            htmlToImage.toJpeg(document.getElementById('capture-element'), { quality: 0.95 })
+            htmlToImage.toPng(document.getElementById('capture-element'))
                 .then(function (dataUrl) {
                     var link = document.createElement('a');
                     link.href = dataUrl;
-                    link.download = '1TTIHAD CLUB.jpg';
-
-                    // Simulate a click on the link
-                    document.body.appendChild(link);
+                    link.download = '1TTIHAD CLUB.png';
                     link.click();
-
-                    // Remove the link from the document
-                    document.body.removeChild(link);
-
                     document.getElementById('result').innerHTML = 'تم التقاط الصورة بنجاح!';
                 })
                 .catch(function (error) {
