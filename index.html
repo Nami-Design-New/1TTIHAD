@@ -25,11 +25,11 @@
     <div id="result"></div>
     <script>
         function capture() {
-            htmlToImage.toPng(document.getElementById('capture-element'))
+            htmlToImage.toJpeg(document.getElementById('capture-element'), { quality: 0.95 })
                 .then(function (dataUrl) {
                     var link = document.createElement('a');
                     link.href = dataUrl;
-                    link.download = '1TTIHAD CLUB.png';
+                    link.download = '1TTIHAD CLUB.jpg';
                     link.click();
                     document.getElementById('result').innerHTML = 'تم التقاط الصورة بنجاح!';
                 })
